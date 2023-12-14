@@ -23,5 +23,6 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
 [SkinWalkers](https://thunderstore.io/c/lethal-company/p/RugbugRedfern/Skinwalkers/)
 [HelmetCameras](https://thunderstore.io/c/lethal-company/p/RickArg/Helmet_Cameras/)
 [MoreSuits](https://thunderstore.io/c/lethal-company/p/x753/More_Suits/)
+[BetterEmotes](https://thunderstore.io/c/lethal-company/p/Sligili/More_Emotes/)
 
 This is a direct copy of [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) with additional mod(s), full thanks to KrystilizeNevaDies!

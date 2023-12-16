@@ -1,12 +1,12 @@
 # Lethal Company Modpack
 
-This windows powershell script installs BepInEx dependency, MoreCompany, and other additional mods listed under credits.
+This Windows powershell script installs BepInEx dependency, MoreCompany, and other additional mods listed under credits.
 
 Initially, this was made to ease the additional installation of additional mods for [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) for my friends as an alternative towards a mod manager, but feel free to use it if you'd like.
 
 ## Installing
 
-Ensure that Lethal Company is closed and then run the script in Windows Powershell.
+Ensure that Lethal Company is closed and then run the script in Windows powershell.
 
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/release/Install-Modpack.ps1')))) -ArgumentList @( `

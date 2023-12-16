@@ -36,6 +36,8 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
     '-Renegades/WalkieUse','1.3.1', `
     '-Renegades/FlashlightToggle','1.4.1')"
 ```
+
+Afterwards, execute the script in Windows's powershell.
                   
 ## Mods used within my modpack + Credits
 

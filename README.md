@@ -4,7 +4,7 @@ This Windows powershell script installs BepInEx dependency by default and instal
 
 Initially, this was made to ease the additional installation of additional mods for [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) for my friends as an alternative towards a mod manager, but feel free to use it if you'd like.
 
-## Installing
+## Installing/modifying
 
 In order to install, you must modify the script to your liking. Below is an example of what one should look like. 
 ```

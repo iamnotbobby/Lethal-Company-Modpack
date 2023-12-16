@@ -20,7 +20,9 @@ You can also change the version number by just looking at their corresponding nu
 
 ``'-skinwalkers','2.0.1'``
                   
-## Mods used + Credits
+## Mods used/versions + Credits
+
+Lethal Company > 45
 
 [BepInExPack](https://thunderstore.io/c/lethal-company/p/BepInEx/BepInExPack/) > always latest
 <br>[MoreCompany](https://thunderstore.io/c/lethal-company/p/notnotnotswipez/MoreCompany/) > 1.7.2

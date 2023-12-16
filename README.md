@@ -34,7 +34,7 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
 
 You can also change the version number by just looking at their corresponding numbers
 
-``'-skinwalkers','2.0.1'``
+``'-skinwalkers','x.x.x'``
                   
 ## Mods used/versions + Credits
 

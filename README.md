@@ -36,6 +36,8 @@ Lethal Company > 45
 <br>[SpectateEnemies](https://thunderstore.io/c/lethal-company/p/AllToasters/SpectateEnemies/) > 1.5.0
 <br>[CompatibilityChecker](https://thunderstore.io/c/lethal-company/p/Ryokune/CompatibilityChecker/) > 1.1.1
 <br>[AlwaysHearActiveWalkies](https://thunderstore.io/c/lethal-company/p/Suskitech/AlwaysHearActiveWalkies/) > 1.4.2
+<br>[WalkieUse](https://thunderstore.io/c/lethal-company/p/Renegades/WalkieUse/) > 1.3.1
+<br>[FlashlightToggle](https://thunderstore.io/c/lethal-company/p/Renegades/FlashlightToggle/) > 1.4.1
 
 Want a mod added? Issues? Questions? File an issue and I'll get to you soon.
 

@@ -6,6 +6,8 @@ Initially, this was made to ease the additional installation of additional mods 
 
 ## Installing
 
+Ensure that Lethal Company is closed and then run the script in Windows Powershell.
+
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/release/Install-Modpack.ps1')))) -ArgumentList @( `
     '-morecompany','1.7.2', `

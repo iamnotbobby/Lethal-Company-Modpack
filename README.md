@@ -13,7 +13,7 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
 Remove parameters if you wish to exclude a mod. Below is an example of what removing ``'-moresuits','1.4.1'`` looks like.
 
 ``
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/MoreCompany-Addition/releases/download/release/Install-MoreCompany.ps1')))) -ArgumentList @('-morecompany','1.7.2','-skinwalkers','2.0.1','-helmetcameras','2.1.5')"
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/release/Install-MoreCompany.ps1')))) -ArgumentList @('-morecompany','1.7.2','-skinwalkers','2.0.1','-helmetcameras','2.1.5')"
 ``
 
 You can also change the version number by just looking at their corresponding numbers
@@ -34,6 +34,6 @@ You can also change the version number by just looking at their corresponding nu
 <br>[SpectateEnemies](https://thunderstore.io/c/lethal-company/p/AllToasters/SpectateEnemies/) > 1.5.0
 <br>[CompatibilityChecker](https://thunderstore.io/c/lethal-company/p/Ryokune/CompatibilityChecker/) > 1.1.1
 
-Want a mod added? Make a pull request.
+Want a mod added? Issues? Questions? File an issue and I'll get to you soon.
 
 This is a direct copy of [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) with additional mod(s), full thanks to KrystilizeNevaDies!

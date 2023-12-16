@@ -1,4 +1,4 @@
-# MoreCompany-Skinwalkers
+# MoreCompany + Additional Mods 
 
 This windows powershell script installs BepInEx dependency, MoreCompany, and other additional mods listed under credits.
 

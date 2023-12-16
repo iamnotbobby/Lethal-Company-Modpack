@@ -1,6 +1,6 @@
 # MoreCompany-Skinwalkers
 
-This windows powershell script installs BepInEx dependency, MoreCompany, as well as the Skinwalkers mod. 
+This windows powershell script installs BepInEx dependency, MoreCompany, and other additional mods listed under credits.
 
 Initially, this was made to ease the additional installation of the Skinwalkers mod alongside MoreCompany for my friends, but feel free to use it if you'd like.
 

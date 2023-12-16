@@ -12,7 +12,7 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
     '-authorName/modName','versionNumber', `
     '-authorName/modName','versionNumber')"
 ```
-<br>Ensure that you have the correct syntax otherwise the script may not execute correctly.
+Ensure that you have the correct syntax otherwise the script may not execute correctly.
 <br>``'`` specifies each invididual argument | ex. ``'-notnotnotswipez/MoreCompany','1.7.2'``
 <br>``,`` refers to next line, required after | ex. ``'-notnotnotswipez/MoreCompany','1.7.2',``
 <br>`` ` `` refers to new line | ex. ``'-notnotnotswipez/MoreCompany','1.7.2', ` ``
@@ -37,7 +37,8 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
     '-Renegades/FlashlightToggle','1.4.1')"
 ```
 
-Afterwards, execute the script in Windows's powershell.
+Afterwards, execute the script in Windows's powershell. 
+<br>In the scenario where you come across a mod where it's not installed at the correct path, open an issue and I'll add a check for it.
                   
 ## Mods used within my modpack + Credits
 

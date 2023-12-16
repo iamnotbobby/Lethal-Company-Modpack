@@ -7,13 +7,13 @@ Initially, this was made to ease the additional installation of the Skinwalkers 
 ## Install MoreCompany + Skinwalkers
 
 ``
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/MoreCompany-Skinwalkers/releases/download/release/Install-MoreCompany.ps1')))) -ArgumentList @('-morecompany','1.7.2','-skinwalkers','2.0.1','-helmetcameras','2.1.5','-moresuits','1.4.1')"
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/MoreCompany-Addition/releases/download/release/Install-MoreCompany.ps1')))) -ArgumentList @('-morecompany','1.7.2','-skinwalkers','2.0.1','-helmetcameras','2.1.5','-moresuits','1.4.1')"
 ``
 
 Remove parameters if you wish to exclude a mod. Below is an example of what removing ``'-moresuits','1.4.1'`` looks like.
 
 ``
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/MoreCompany-Skinwalkers/releases/download/release/Install-MoreCompany.ps1')))) -ArgumentList @('-morecompany','1.7.2','-skinwalkers','2.0.1','-helmetcameras','2.1.5')"
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/MoreCompany-Addition/releases/download/release/Install-MoreCompany.ps1')))) -ArgumentList @('-morecompany','1.7.2','-skinwalkers','2.0.1','-helmetcameras','2.1.5')"
 ``
 
 ## Mods used + Credits

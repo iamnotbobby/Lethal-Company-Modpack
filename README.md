@@ -7,7 +7,7 @@ Initially, this was made to ease the additional installation of additional mods 
 ## Installing
 
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/install-script-0.0.3/Install-Modpack.ps1')))) -ArgumentList @('-morecompany','1.7.2','-skinwalkers','2.0.1','-helmetcameras','2.1.5','-moresuits','1.4.1','-moreemotes','1.2.1','-customboombox','1.0.2','-customradio','0.1.1','-yippee','1.2.2','-spectateenemies','1.5.0','-compatibilitychecker','1.1.1','-activewalkies','1.4.2')" 
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/install-script-0.0.3/Install-Modpack.ps1')))) -ArgumentList @('-morecompany','1.7.2','-skinwalkers','2.0.1','-helmetcameras','2.1.5','-moresuits','1.4.1','-moreemotes','1.2.1','-customboombox','1.0.2','-customradio','0.1.1','-yippee','1.2.2','-spectateenemies','1.5.0','-compatibilitychecker','1.1.1','-activewalkies','1.4.2','-walkieuse','1.3.1','-flashlightuse','1.4.1')" 
 ```
 
 Remove parameters if you wish to exclude a mod. Below is an example of what removing ``'-moresuits','1.4.1'`` looks like.

@@ -35,7 +35,7 @@ Lethal Company > 45
 <br>[YippeeMod](https://thunderstore.io/c/lethal-company/p/sunnobunno/YippeeMod/) > 1.2.3
 <br>[SpectateEnemies](https://thunderstore.io/c/lethal-company/p/AllToasters/SpectateEnemies/) > 1.5.0
 <br>[CompatibilityChecker](https://thunderstore.io/c/lethal-company/p/Ryokune/CompatibilityChecker/) > 1.1.1
-<br>[AlwaysHearActiveWalkies](https://thunderstore.io/c/lethal-company/p/Suskitech/AlwaysHearActiveWalkies/) > 
+<br>[AlwaysHearActiveWalkies](https://thunderstore.io/c/lethal-company/p/Suskitech/AlwaysHearActiveWalkies/) > 1.4.2
 
 Want a mod added? Issues? Questions? File an issue and I'll get to you soon.
 

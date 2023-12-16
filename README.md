@@ -61,4 +61,4 @@ Lethal Company -> 45
 
 Want a mod added? Issues? Questions? File an issue and I'll get to you soon.
 
-This is a direct copy of [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) with additional mod(s), full thanks to KrystilizeNevaDies!
+This is a modified version of [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) with the option to add any mod you'd like. Full thanks to KrystilizeNevaDies!

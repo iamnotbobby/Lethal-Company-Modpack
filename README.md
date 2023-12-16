@@ -1,4 +1,4 @@
-# MoreCompany + Additional Mods 
+# Lethal Company Modpack
 
 This windows powershell script installs BepInEx dependency, MoreCompany, and other additional mods listed under credits.
 

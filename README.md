@@ -38,7 +38,7 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
 ```
 
 Afterwards, execute the script in Windows's powershell. 
-<br>In the scenario where you come across a mod where it's not installed at the correct path, open an issue and I'll add a check for it.
+<br>*In the scenario where you come across a mod where it's not installed at the correct path, open an issue and I'll add a check for it.*
                   
 ## Mods used within my modpack + Credits
 

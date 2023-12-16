@@ -1,6 +1,6 @@
 # Lethal Company Modpack
 
-This Windows powershell script installs BepInEx dependency by default and installs any other mods you specify with the given format.
+This Windows powershell script installs BepInEx dependency by default and installs any other mods (Thunderstore) you specify with the given format.
 
 Initially, this was made to ease the additional installation of additional mods for [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) for my friends as an alternative towards a mod manager, but feel free to use it if you'd like.
 

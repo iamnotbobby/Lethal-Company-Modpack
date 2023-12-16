@@ -1,44 +1,43 @@
 # Lethal Company Modpack
 
-This Windows powershell script installs BepInEx dependency, MoreCompany, and other additional mods listed under credits.
+This Windows powershell script installs BepInEx dependency by default and installs any other mods you specify with the given format.
 
 Initially, this was made to ease the additional installation of additional mods for [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) for my friends as an alternative towards a mod manager, but feel free to use it if you'd like.
 
 ## Installing
 
-Ensure that Lethal Company is closed and then run the script in Windows powershell.
+In order to install, you must modify the script to your liking. Below is an example of what one should look like. 
+```
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/release/Install-Modpack.ps1')))) -ArgumentList @( `
+    '-authorName/modName','versionNumber', `
+    '-authorName/modName','versionNumber')"
+```
+<br>Ensure that you have the correct syntax otherwise the script may not execute correctly.
+<br>``'`` specifies each invididual argument | ex. ``'-notnotnotswipez/MoreCompany','1.7.2'``
+<br>``,`` refers to next line, required after | ex. ``'-notnotnotswipez/MoreCompany','1.7.2',``
+<br>`` ` `` refers to new line | ex. ``'-notnotnotswipez/MoreCompany','1.7.2', ` ``
+<br>``)"`` closes the list | ex. ``'-Renegades/FlashlightToggle','1.4.1')"``
+
+Below is an example of what a script may look. You may also use this if you'd like as it's used within my friendgroup as our modpack.
 
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/release/Install-Modpack.ps1')))) -ArgumentList @( `
-    '-morecompany','1.7.2', `
-    '-skinwalkers','2.0.1', `
-    '-helmetcameras','2.1.5', `
-    '-moresuits','1.4.1', `
-    '-moreemotes','1.2.1', `
-    '-boomboxcontroller','1.1.0', `
-    '-shiplobby','1.0.2', `
-    '-yippee','1.2.2', `
-    '-spectateenemies','1.5.0', `
-    '-compatibilitychecker','1.1.1', `
-    '-activewalkies','1.4.2', `
-    '-walkieuse','1.3.1', `
-    '-flashlightuse','1.4.1')"
+    '-notnotnotswipez/MoreCompany','1.7.2', `
+    '-RugbugRedfern/Skinwalkers','2.0.1', `
+    '-RickArg/Helmet_Cameras','2.1.5', `
+    '-x753/More_Suits','1.4.1', `
+    '-Sligili/More_Emotes','1.2.1', `
+    '-KoderTeh/Boombox_Controller','1.1.0', `
+    '-tinyhoot/ShipLobby','1.0.2', `
+    '-sunnobunno/YippeeMod','1.2.2', `
+    '-AllToasters/SpectateEnemies','1.5.0', `
+    '-Ryokune/CompatibilityChecker','1.1.1', `
+    '-Suskitech/AlwaysHearActiveWalkies','1.4.2', `
+    '-Renegades/WalkieUse','1.3.1', `
+    '-Renegades/FlashlightToggle','1.4.1')"
 ```
-
-Remove parameters if you wish to exclude a mod. Below is an example of what removing ``'-moresuits','1.4.1'`` looks like. (compare it to the install script)
-
-```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/release/Install-Modpack.ps1')))) -ArgumentList @( `
-    '-morecompany','1.7.2', `
-    '-skinwalkers','2.0.1', `
-    '-helmetcameras','2.1.5')"
-```
-
-You can also change the version number by just looking at their corresponding numbers
-
-``'-skinwalkers','x.x.x'``
                   
-## Mods used/versions + Credits
+## Mods used within my modpack + Credits
 
 Lethal Company -> 45
 

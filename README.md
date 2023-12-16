@@ -4,7 +4,7 @@ This windows powershell script installs BepInEx dependency, MoreCompany, and oth
 
 Initially, this was made to ease the additional installation of the Skinwalkers mod alongside MoreCompany for my friends, but feel free to use it if you'd like.
 
-## Install MoreCompany + Skinwalkers
+## Installing
 
 ``
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/MoreCompany-Addition/releases/download/release/Install-MoreCompany.ps1')))) -ArgumentList @('-morecompany','1.7.2','-skinwalkers','2.0.1','-helmetcameras','2.1.5','-moresuits','1.4.1','-customboombox','1.0.2','-customradio','0.1.1','-yippee','1.2.2','-spectateenemies','1.5.0')"

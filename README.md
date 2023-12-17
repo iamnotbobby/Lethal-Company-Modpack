@@ -6,7 +6,7 @@ Initially, this was made to ease the additional installation of additional mods 
 
 ## Installing/Modifying
 
-In order to install, you must modify the script to your liking. Below is an example of what one should look like. 
+In order to install, you must modify the script to your liking. Below is the given format.
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/release/Install-Modpack.ps1')))) -ArgumentList @( `
     '-authorName/modName','versionNumber', `

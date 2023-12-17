@@ -18,6 +18,8 @@ Ensure that you have the correct syntax otherwise the script may not execute cor
 <br>`` ` `` refers to new line | ex. ``'-notnotnotswipez/MoreCompany','1.7.2', ` ``
 <br>``)"`` closes the list | ex. ``'-Renegades/FlashlightToggle','1.4.1')"``
 
+If you receive a 404 Not Found error most likely means that one of the arguments set does not correctly match the given mod either due to misspelling, nonexistent version, or the mod not exist at all.
+
 Below is an example of what a script may look. You may also use this if you'd like as it's used within my friendgroup as our modpack.
 
 ```

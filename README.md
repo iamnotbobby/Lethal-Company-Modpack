@@ -60,7 +60,7 @@ Only one modpack can be downloaded at a time whereas an unlimited amount of othe
 
 Afterwards, execute the script in Windows's powershell. 
                   
-# Mods used within my modpack + Credits
+## Mods used within my modpack + Credits
 
 Lethal Company -> 45
 

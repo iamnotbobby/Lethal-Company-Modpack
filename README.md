@@ -36,7 +36,7 @@ Afterwards, execute the script in Windows's powershell.
 
 ## Installing Thunderstore Modpacks + Optional Mod(s)
 
-Below is the given format for installing a modpack.
+Below is the given format for installing a modpack. All BepInEx configs that come from modpacks are saved as long they aren't overwritten.
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
     '-modpack','authorName/modPackName','versionNumber')"
@@ -49,9 +49,9 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
     '-mod','authorName/modName','versionNumber')"
 ```
 
-Only one modpack can be downloaded at a time whereas an unlimited amount of other mods can be downloaded. Mod configs in modpacks are also saved within BepInEx's folder.
-
 Afterwards, execute the script in Windows's powershell. 
+
+As of right now, only one modpack can be downloaded so if you wish to add more mods, just utilize ``-mod``.
 
 ## Powershell Syntax
 

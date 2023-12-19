@@ -1,14 +1,14 @@
 # Lethal Company Modpack
 
-This Windows powershell script installs BepInEx dependency by default and installs any other mods (Thunderstore) you specify with the given format.
+This Windows powershell script installs BepInEx dependency by default and installs any other Thunderstore mods/modpacks you specify with the given format.
 
 Initially, this was made to ease the additional installation of additional mods for [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) for my friends as an alternative towards a mod manager, but feel free to use it if you'd like.
 
-## Installing/Modifying
+## Installing Singular Mod(s)
 
-In order to install, you must modify the script to your liking. Below is the given format.
+In order to install a mod, you must modify the script to your liking. Below is the given format.
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/release/Install-Modpack.ps1')))) -ArgumentList @( `
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
     '-authorName/modName','versionNumber', `
     '-authorName/modName','versionNumber')"
 ```
@@ -23,7 +23,7 @@ If you receive a 404 Not Found error it most likely means that one of the argume
 Below is an example of what a script may look. You may also use this if you'd like as it's used within my friendgroup as our modpack.
 
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://github.com/returnkirbo/Lethal-Company-Modpack/releases/download/release/Install-Modpack.ps1')))) -ArgumentList @( `
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
     '-notnotnotswipez/MoreCompany','1.7.2', `
     '-RugbugRedfern/Skinwalkers','2.0.1', `
     '-RickArg/Helmet_Cameras','2.1.5', `
@@ -40,9 +40,27 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
 ```
 
 Afterwards, execute the script in Windows's powershell. 
-<br>*In the scenario where you come across a mod where it's not installed at the correct path, open an issue and I'll add a check for it.*
+
+## Installing Thunderstore Modpacks + Optional Mod(s)
+
+In order to install a modpack, you must modify the script to your liking. Below is the given format.
+```
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
+    '-modpack','authorName/modPackName','versionNumber')"
+```
+
+To add mods ontop of a modpack, you are **required** to specify ``-mod`` when adding a new line of parameters. Declaring a modpack should be the **first** arguments given.
+```
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
+    '-modpack','authorName/modName','versionNumber', `
+    '-mod','authorName/modName','versionNumber')"
+```
+
+Only one modpack can be downloaded at a time whereas an unlimited amount of other mods can be downloaded. Mod configs in modpacks are also saved within BepInEx's folder.
+
+Afterwards, execute the script in Windows's powershell. 
                   
-## Mods used within my modpack + Credits
+# Mods used within my modpack + Credits
 
 Lethal Company -> 45
 

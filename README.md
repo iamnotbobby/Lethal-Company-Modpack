@@ -42,7 +42,7 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
     '-modpack','authorName/modPackName','versionNumber')"
 ```
 
-To add mods ontop of a modpack, you are **required** to specify ``-mod`` when adding a new line of parameters. Declaring a modpack should be the **first** arguments given.
+To add mods ontop of a modpack, you are **required** to specify ``-mod`` when adding a new line of arguments. Declaring a modpack should be the **first** arguments given.
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
     '-modpack','authorName/modName','versionNumber', `

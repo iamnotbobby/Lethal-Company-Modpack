@@ -36,7 +36,7 @@ Afterwards, execute the script in Windows's powershell.
 
 ## Installing Thunderstore Modpacks + Optional Mod(s)
 
-In order to install a modpack, you must modify the script to your liking. Below is the given format.
+Below is the given format for installing a modpack.
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
     '-modpack','authorName/modPackName','versionNumber')"

@@ -16,7 +16,7 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
 Below is an example of what a script may look. You may also use this if you'd like as it's used within my friendgroup as our modpack.
 
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/0b17f3e8974195e6135b316ae0c24cfcff242e1b/Install-Modpack.ps1')))) -ArgumentList @( `
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
     '-notnotnotswipez/MoreCompany','1.7.2', `
     '-RugbugRedfern/Skinwalkers','2.0.1', `
     '-RickArg/Helmet_Cameras','2.1.5', `
@@ -38,13 +38,13 @@ Afterwards, execute the script in Windows's powershell.
 
 Below is the given format for installing a modpack. All BepInEx configs that come from modpacks are saved as long they aren't overwritten.
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/0b17f3e8974195e6135b316ae0c24cfcff242e1b/Install-Modpack.ps1')))) -ArgumentList @( `
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
     '-modpack','authorName/modPackName','versionNumber')"
 ```
 
 To add mods ontop of a modpack, you are **required** to specify ``-mod`` when adding a new line of arguments. Declaring a modpack should be the **first** arguments given.
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/0b17f3e8974195e6135b316ae0c24cfcff242e1b/Install-Modpack.ps1')))) -ArgumentList @( `
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
     '-modpack','authorName/modName','versionNumber', `
     '-mod','authorName/modName','versionNumber')"
 ```

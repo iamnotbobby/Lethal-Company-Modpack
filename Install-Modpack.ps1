@@ -63,7 +63,7 @@ function Install-Package {
     $packageUrl = "https://thunderstore.io/package/download/$packageName/$packageVersion/"
     $packageStream = Request-Stream $packageUrl
 	
-    # create a temporary directory to extract the contents
+	# create a temporary directory to extract the contents
     $tempDir = New-Item -ItemType Directory -Path (Join-Path $env:TEMP -ChildPath ([System.Guid]::NewGuid().ToString()))
 
     try {
@@ -94,7 +94,7 @@ function Install-Package {
 			Write-Host ""
         }
 		
-	# path correction
+		# path correction
         if (Test-Path $bepInExFolder -PathType Container) {
             $installPath = $lethalCompanyPath
         } elseif (Test-Path $pluginsFolder -PathType Container){
@@ -103,7 +103,7 @@ function Install-Package {
 			$installPath = $pluginsPath
 		}
 
-        	# move the contents to the installation path
+        # move the contents to the installation path
 		Copy-Item $tempDir\* -Destination $installPath -Recurse -Force
     } finally {
         # clean up the temporary directory
@@ -176,7 +176,7 @@ function Install ($arguments) {
     Write-Host ""
 	
 	# checks for modpack declaration
-	if ($arguments[0] -eq '-modpack') {
+	if ($arguments[0] -contains '-modpack') {
 		$argValues = $argValue -split ','
         $packageName = $arguments[1]
         $packageVersion = $arguments[2]
@@ -220,12 +220,24 @@ function Install ($arguments) {
 			}
         } finally {
 			Remove-Item $tempDir -Recurse -Force
+			
+			Write-Warning "Modpack dependencies installed. Installing other mods if there are any requested by the user."
+			Write-Host ""
+			
+			for ($i = 4; $i -lt $arguments.Count; $i += 3) {
+			$packageName = $arguments[$i]
+			$packageVersion = $arguments[$i + 1]
+			
+			Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
 			}
+		}
 	} else {
 		# process multiple package arguments dynamically if it's not a modpack
 		for ($i = 0; $i -lt $arguments.Count; $i += 2) {
 			$packageNameWithDash = $arguments[$i]
 			$packageVersion = $arguments[$i + 1]
+			
+			Write-Host "$packageNameWithDash / $packageVersion"
 
 			# remove the leading '-' character from the package name
 			$packageName = $packageNameWithDash -replace '^-', ''

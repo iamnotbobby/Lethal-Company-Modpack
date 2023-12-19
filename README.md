@@ -12,13 +12,6 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
     '-authorName/modName','versionNumber', `
     '-authorName/modName','versionNumber')"
 ```
-Ensure that you have the correct syntax otherwise the script may not execute correctly.
-<br>``'`` specifies each invididual argument | ex. ``'-notnotnotswipez/MoreCompany','1.7.2'``
-<br>``,`` refers to next line, required after | ex. ``'-notnotnotswipez/MoreCompany','1.7.2',``
-<br>`` ` `` refers to new line | ex. ``'-notnotnotswipez/MoreCompany','1.7.2', ` ``
-<br>``)"`` closes the list | ex. ``'-Renegades/FlashlightToggle','1.4.1')"``
-
-If you receive a 404 Not Found error it most likely means that one of the arguments set does not correctly match the given mod either due to misspelling, nonexistent version, or the mod not exist at all.
 
 Below is an example of what a script may look. You may also use this if you'd like as it's used within my friendgroup as our modpack.
 
@@ -59,6 +52,17 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
 Only one modpack can be downloaded at a time whereas an unlimited amount of other mods can be downloaded. Mod configs in modpacks are also saved within BepInEx's folder.
 
 Afterwards, execute the script in Windows's powershell. 
+
+## Powershell Syntax
+
+Ensure that you have the correct syntax otherwise the script may not execute correctly.
+<br>``'`` specifies each invididual argument | ex. ``'-notnotnotswipez/MoreCompany','1.7.2'``
+<br>``,`` refers to next line, required after a ``'`` | ex. ``'-notnotnotswipez/MoreCompany','1.7.2',``
+<br>`` ` `` refers to new line | ex. ``'-notnotnotswipez/MoreCompany','1.7.2', ` ``
+
+*if you only need one set of arguments, you only need to provide ``)"`` as the closing and not ``,`` or `` ` ``*
+
+If you receive a 404 Not Found error it most likely means that one of the arguments set does not correctly match the given mod either due to misspelling, nonexistent version, or the mod not exist at all.
                   
 ## Mods used within my modpack + Credits
 

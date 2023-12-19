@@ -236,8 +236,6 @@ function Install ($arguments) {
 		for ($i = 0; $i -lt $arguments.Count; $i += 2) {
 			$packageNameWithDash = $arguments[$i]
 			$packageVersion = $arguments[$i + 1]
-			
-			Write-Host "$packageNameWithDash / $packageVersion"
 
 			# remove the leading '-' character from the package name
 			$packageName = $packageNameWithDash -replace '^-', ''

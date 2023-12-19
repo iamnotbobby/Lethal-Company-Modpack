@@ -54,17 +54,16 @@ function Get-Arg($arguments, $argName) {
 function Install-Package {
     param (
         [string]$packageName,
-        [string]$packageArgument,
+        [string]$packageVersion,
         [string]$lethalCompanyPath
     )
 
-    Write-Host "Downloading and installing -> $packageName"
+    Write-Progress "Downloading and installing -> $packageName/$packageArgument at v$packageVersion"
     
-    $packageVersion = Get-Arg $arguments $packageArgument
     $packageUrl = "https://thunderstore.io/package/download/$packageName/$packageVersion/"
     $packageStream = Request-Stream $packageUrl
 	
-	# create a temporary directory to extract the contents
+    # create a temporary directory to extract the contents
     $tempDir = New-Item -ItemType Directory -Path (Join-Path $env:TEMP -ChildPath ([System.Guid]::NewGuid().ToString()))
 
     try {
@@ -73,7 +72,29 @@ function Install-Package {
         # checks for correct path
         $bepInExFolder = Join-Path $tempDir.FullName "BepInEx"
 		$pluginsFolder = Join-Path $tempDir.FullName "plugins"
+
+		$pluginsCheck = Join-Path $bepInExPath "plugins"
+        $coreCheck = Join-Path $bepInExPath "core"
+        $configCheck = Join-Path $bepInExPath "config"
 		
+		# ensure the required folders exist to prevent "file" format being created
+        if (-not (Test-Path $pluginsCheck -PathType Container)) {
+            New-Item -ItemType Directory -Path $pluginsCheck | Out-Null
+			Write-Warning "Plugins folder created."
+			Write-Host ""
+        }
+        if (-not (Test-Path $coreCheck -PathType Container)) {
+            New-Item -ItemType Directory -Path $coreCheck | Out-Null
+			Write-Warning "Core folder created."
+			Write-Host ""
+        }
+        if (-not (Test-Path $configCheck -PathType Container)) {
+            New-Item -ItemType Directory -Path $configCheck | Out-Null
+			Write-Warning "Config folder created."
+			Write-Host ""
+        }
+		
+	# path correction
         if (Test-Path $bepInExFolder -PathType Container) {
             $installPath = $lethalCompanyPath
         } elseif (Test-Path $pluginsFolder -PathType Container){
@@ -82,7 +103,7 @@ function Install-Package {
 			$installPath = $pluginsPath
 		}
 
-        # move the contents to the installation path
+        	# move the contents to the installation path
 		Copy-Item $tempDir\* -Destination $installPath -Recurse -Force
     } finally {
         # clean up the temporary directory
@@ -154,25 +175,72 @@ function Install ($arguments) {
     Write-Host "Installed BepInEx"
     Write-Host ""
 	
-	# process package arguments dynamically
-	for ($i = 0; $i -lt $arguments.Count; $i += 2) {
-		$packageNameWithDash = $arguments[$i]
-		$packageVersion = $arguments[$i + 1]
+	# checks for modpack declaration
+	if ($arguments[0] -eq '-modpack') {
+		$argValues = $argValue -split ','
+        $packageName = $arguments[1]
+        $packageVersion = $arguments[2]
+		
+		# ensuring that config folders & other folders aren't left behind before downloading other mods
+		Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
+		Write-Warning "Modpack $packageName installed, installing dependencies now."
+		Write-Host ""
+		
+        $packageUrl = "https://thunderstore.io/package/download/$packageName/$packageVersion"
+		
+        # unzip the file to a temporary directory to read manifest.json
+        $tempDir = New-Item -ItemType Directory -Path (Join-Path $env:TEMP -ChildPath ([System.Guid]::NewGuid().ToString()))
+        Expand-Stream (Request-Stream $packageUrl) $tempDir.FullName
 
-		# remove the leading '-' character from the package name
-		$packageName = $packageNameWithDash -replace '^-', ''
+        try {
+            $manifestPath = Join-Path $tempDir.FullName "manifest.json"
+            if (Test-Path $manifestPath -PathType Leaf) {
+				$manifestContent = Get-Content $manifestPath -Raw | ConvertFrom-Json
 
-		Install-Package -packageName $packageName -packageArgument $packageNameWithDash -lethalCompanyPath $lethalCompanyPath -version $packageVersion
+                foreach ($dependency in $manifestContent.dependencies) {
+					# assuming dependency is formatted as "Author-ModName-Version"
+					$dependencyParts = $dependency -split '-'
+					$dependencyAuthor = $dependencyParts[0]
+                    $dependencyModName = $dependencyParts[1]
+                    $dependencyVersion = $dependencyParts[2]
+
+                    # combining into singular package name
+                    $dependencyPackageName = "$dependencyAuthor/$dependencyModName"
+					
+					if ($dependencyModName -ne "BepInExPack"){
+						Install-Package -packageName $dependencyPackageName -packageVersion $dependencyVersion -lethalCompanyPath $lethalCompanyPath
+					} else {
+						Write-Host "Skipping installation of BepInEx as it's already installed."
+						Write-Host ""
+					}
+                    
+				}
+            } else {
+				Write-Host "Manifest file not found in the modpack archive."
+			}
+        } finally {
+			Remove-Item $tempDir -Recurse -Force
+			}
+	} else {
+		# process multiple package arguments dynamically if it's not a modpack
+		for ($i = 0; $i -lt $arguments.Count; $i += 2) {
+			$packageNameWithDash = $arguments[$i]
+			$packageVersion = $arguments[$i + 1]
+
+			# remove the leading '-' character from the package name
+			$packageName = $packageNameWithDash -replace '^-', ''
+		
+			Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
+		}
 	}
 }
 
 
 try {
     Install $args
-
     Write-Host "Install successful"
 } catch {
-    Write-Host "Install failed -> $_"
+    Write-Error "Install failed -> $_"
 }
 
 Read-Host “Press ENTER to exit...”

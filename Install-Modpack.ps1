@@ -71,45 +71,44 @@ function Install-Package {
 
         # checks for correct path
         $bepInExFolder = Join-Path $tempDir.FullName "BepInEx"
-		$pluginsFolder = Join-Path $tempDir.FullName "plugins"
+	$pluginsFolder = Join-Path $tempDir.FullName "plugins"
 
-		$pluginsCheck = Join-Path $bepInExPath "plugins"
+	$pluginsCheck = Join-Path $bepInExPath "plugins"
         $coreCheck = Join-Path $bepInExPath "core"
         $configCheck = Join-Path $bepInExPath "config"
 		
 		# ensure the required folders exist to prevent "file" format being created
         if (-not (Test-Path $pluginsCheck -PathType Container)) {
             New-Item -ItemType Directory -Path $pluginsCheck | Out-Null
-			Write-Warning "Plugins folder created."
-			Write-Host ""
+	    Write-Warning "Plugins folder created."
+     		Write-Host ""
         }
         if (-not (Test-Path $coreCheck -PathType Container)) {
             New-Item -ItemType Directory -Path $coreCheck | Out-Null
-			Write-Warning "Core folder created."
-			Write-Host ""
+	    Write-Warning "Core folder created."
+     		Write-Host ""
         }
         if (-not (Test-Path $configCheck -PathType Container)) {
             New-Item -ItemType Directory -Path $configCheck | Out-Null
-			Write-Warning "Config folder created."
-			Write-Host ""
+	    Write-Warning "Config folder created."
+     		Write-Host ""
         }
 		
-		# path correction
+	# path correction
         if (Test-Path $bepInExFolder -PathType Container) {
             $installPath = $lethalCompanyPath
         } elseif (Test-Path $pluginsFolder -PathType Container){
             $installPath = $bepInExPath
         } else {
-			$installPath = $pluginsPath
+	$installPath = $pluginsPath
 		}
 
         # move the contents to the installation path
-		Copy-Item $tempDir\* -Destination $installPath -Recurse -Force
+	Copy-Item $tempDir\* -Destination $installPath -Recurse -Force
     } finally {
         # clean up the temporary directory
         Remove-Item $tempDir -Recurse -Force
     }
-
     Write-Host "Installed $packageName @ $installPath"
     Write-Host ""
 }
@@ -174,17 +173,17 @@ function Install ($arguments) {
     Expand-Stream $stream $lethalCompanyPath
     Write-Host "Installed BepInEx"
     Write-Host ""
-	
-	# checks for modpack declaration
-	if ($arguments[0] -contains '-modpack') {
-		$argValues = $argValue -split ','
+    
+    # checks for modpack declaration
+    if ($arguments[0] -contains '-modpack') {
+    	$argValues = $argValue -split ','
         $packageName = $arguments[1]
-        $packageVersion = $arguments[2]
-		
-		# ensuring that config folders & other folders aren't left behind before downloading other mods
-		Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
-		Write-Warning "Modpack $packageName installed, installing dependencies now."
-		Write-Host ""
+       	$packageVersion = $arguments[2]
+	
+	# ensuring that config folders & other folders aren't left behind before downloading other mods
+	Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
+	Write-Warning "Modpack $packageName installed, installing dependencies now."
+	Write-Host ""
 		
         $packageUrl = "https://thunderstore.io/package/download/$packageName/$packageVersion"
 		
@@ -195,44 +194,43 @@ function Install ($arguments) {
         try {
             $manifestPath = Join-Path $tempDir.FullName "manifest.json"
             if (Test-Path $manifestPath -PathType Leaf) {
-				$manifestContent = Get-Content $manifestPath -Raw | ConvertFrom-Json
+	    $manifestContent = Get-Content $manifestPath -Raw | ConvertFrom-Json
 
                 foreach ($dependency in $manifestContent.dependencies) {
-					# assuming dependency is formatted as "Author-ModName-Version"
-					$dependencyParts = $dependency -split '-'
-					$dependencyAuthor = $dependencyParts[0]
-                    $dependencyModName = $dependencyParts[1]
-                    $dependencyVersion = $dependencyParts[2]
+		# assuming dependency is formatted as "Author-ModName-Version"
+  		$dependencyParts = $dependency -split '-'
+		$dependencyAuthor = $dependencyParts[0]
+                $dependencyModName = $dependencyParts[1]
+                $dependencyVersion = $dependencyParts[2]
 
-                    # combining into singular package name
-                    $dependencyPackageName = "$dependencyAuthor/$dependencyModName"
+                # combining into singular package name
+                $dependencyPackageName = "$dependencyAuthor/$dependencyModName"
 					
-					if ($dependencyModName -ne "BepInExPack"){
-						Install-Package -packageName $dependencyPackageName -packageVersion $dependencyVersion -lethalCompanyPath $lethalCompanyPath
-					} else {
-						Write-Host "Skipping installation of BepInEx as it's already installed."
-						Write-Host ""
-					}
-                    
-				}
-            } else {
-				Write-Host "Manifest file not found in the modpack archive."
-			}
-        } finally {
-			Remove-Item $tempDir -Recurse -Force
-			
-			Write-Warning "Modpack dependencies installed. Installing other mods if there are any requested by the user."
+		if ($dependencyModName -ne "BepInExPack"){
+  			Install-Package -packageName $dependencyPackageName -packageVersion $dependencyVersion -lethalCompanyPath $lethalCompanyPath
+     		} else {
+       			Write-Host "Skipping installation of BepInEx as it's already installed."
 			Write-Host ""
-			
-			for ($i = 4; $i -lt $arguments.Count; $i += 3) {
-			$packageName = $arguments[$i]
-			$packageVersion = $arguments[$i + 1]
-			
-			Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
-			}
+   			}
+                }
+            } else {
+	    	Write-Host "Manifest file not found in the modpack archive."
 		}
+        } finally {
+		Remove-Item $tempDir -Recurse -Force
+			
+		Write-Warning "Modpack dependencies installed. Installing other mods if there are any requested by the user."
+		Write-Host ""
+			
+		for ($i = 4; $i -lt $arguments.Count; $i += 3) {
+  			$packageName = $arguments[$i]
+			$packageVersion = $arguments[$i + 1]
+				
+			Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
+		}
+	}
 	} else {
-		# process multiple package arguments dynamically if it's not a modpack
+ 		# process multiple package arguments dynamically if it's not a modpack
 		for ($i = 0; $i -lt $arguments.Count; $i += 2) {
 			$packageNameWithDash = $arguments[$i]
 			$packageVersion = $arguments[$i + 1]

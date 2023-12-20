@@ -193,25 +193,26 @@ function Install ($arguments) {
 
         try {
             $manifestPath = Join-Path $tempDir.FullName "manifest.json"
+	    
             if (Test-Path $manifestPath -PathType Leaf) {
-	    $manifestContent = Get-Content $manifestPath -Raw | ConvertFrom-Json
+	    	$manifestContent = Get-Content $manifestPath -Raw | ConvertFrom-Json
 
                 foreach ($dependency in $manifestContent.dependencies) {
-		# assuming dependency is formatted as "Author-ModName-Version"
-  		$dependencyParts = $dependency -split '-'
-		$dependencyAuthor = $dependencyParts[0]
-                $dependencyModName = $dependencyParts[1]
-                $dependencyVersion = $dependencyParts[2]
-
-                # combining into singular package name
-                $dependencyPackageName = "$dependencyAuthor/$dependencyModName"
+			# assuming dependency is formatted as "Author-ModName-Version"
+	  		$dependencyParts = $dependency -split '-'
+			$dependencyAuthor = $dependencyParts[0]
+	                $dependencyModName = $dependencyParts[1]
+	                $dependencyVersion = $dependencyParts[2]
+	
+	                # combining into singular package name
+	                $dependencyPackageName = "$dependencyAuthor/$dependencyModName"
 					
-		if ($dependencyModName -ne "BepInExPack"){
-  			Install-Package -packageName $dependencyPackageName -packageVersion $dependencyVersion -lethalCompanyPath $lethalCompanyPath
-     		} else {
-       			Write-Host "Skipping installation of BepInEx as it's already installed."
-			Write-Host ""
-   			}
+			if ($dependencyModName -ne "BepInExPack"){
+  				Install-Package -packageName $dependencyPackageName -packageVersion $dependencyVersion -lethalCompanyPath $lethalCompanyPath
+     			} else {
+       				Write-Host "Skipping installation of BepInEx as it's already installed."
+				Write-Host ""
+   				}
                 }
             } else {
 	    	Write-Host "Manifest file not found in the modpack archive."

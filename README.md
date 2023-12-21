@@ -4,6 +4,8 @@ This Windows powershell script allows you to install BepInEx (by default) and an
 
 Initially, this was made to ease the additional installation of additional mods for [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) for my friends as an alternative towards a mod manager, but feel free to use it if you'd like.
 
+"hey man just pop this script into powershell"
+
 ## Installing Singular Mod(s)
 
 In order to install a mod, you must modify the script to your liking. Below is the given format.

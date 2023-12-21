@@ -38,6 +38,15 @@ function Expand-Stream($zipStream, $destination) {
 
     # extract the temporary file to the destination folder
     Expand-Archive -Path $tempFilePath -DestinationPath $destination -Force
+	$exclusionList = @("README.md", "CHANGELOG.md", "icon.png")
+	
+	# delete the specified files since they are useless
+    foreach ($file in $exclusionList) {
+        $filePath = Join-Path $destination $file
+        if (Test-Path $filePath -PathType Leaf) {
+            Remove-Item $filePath -Force
+        }
+    }
 
     # delete the temporary file
     Remove-Item -Path $tempFilePath -Force
@@ -180,10 +189,10 @@ function Install ($arguments) {
         $packageName = $arguments[1]
        	$packageVersion = $arguments[2]
 	
-	# ensuring that config folders & other folders aren't left behind before downloading other mods
-	Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
-	Write-Warning "Modpack $packageName installed, installing dependencies now."
-	Write-Host ""
+		# ensuring that config folders & other folders aren't left behind before downloading other mods
+		Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
+		Write-Warning "Modpack $packageName installed, installing dependencies now."
+		Write-Host ""
 		
         $packageUrl = "https://thunderstore.io/package/download/$packageName/$packageVersion"
 		
@@ -195,12 +204,12 @@ function Install ($arguments) {
             $manifestPath = Join-Path $tempDir.FullName "manifest.json"
 	    
             if (Test-Path $manifestPath -PathType Leaf) {
-	    	$manifestContent = Get-Content $manifestPath -Raw | ConvertFrom-Json
+				$manifestContent = Get-Content $manifestPath -Raw | ConvertFrom-Json
 
                 foreach ($dependency in $manifestContent.dependencies) {
-			# assuming dependency is formatted as "Author-ModName-Version"
-	  		$dependencyParts = $dependency -split '-'
-			$dependencyAuthor = $dependencyParts[0]
+					# assuming dependency is formatted as "Author-ModName-Version"
+					$dependencyParts = $dependency -split '-'
+					$dependencyAuthor = $dependencyParts[0]
 	                $dependencyModName = $dependencyParts[1]
 	                $dependencyVersion = $dependencyParts[2]
 	
@@ -218,14 +227,16 @@ function Install ($arguments) {
 	    	Write-Host "Manifest file not found in the modpack archive."
 		}
         } finally {
-		Remove-Item $tempDir -Recurse -Force
+			Remove-Item $tempDir -Recurse -Force
+				
+			Write-Warning "Modpack dependencies installed. Installing other mods if there are any requested by the user."
+			Write-Host ""
 			
-		Write-Warning "Modpack dependencies installed. Installing other mods if there are any requested by the user."
-		Write-Host ""
-			
-		for ($i = 4; $i -lt $arguments.Count; $i += 3) {
-  			$packageName = $arguments[$i]
+		for ($i = 3; $i -lt $arguments.Count; $i += 2) {
+  			$packageNameWithDash = $arguments[$i]
 			$packageVersion = $arguments[$i + 1]
+			
+			$packageName = $packageNameWithDash -replace '^-', ''
 				
 			Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
 		}

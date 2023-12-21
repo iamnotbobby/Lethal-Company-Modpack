@@ -9,27 +9,27 @@ Initially, this was made to ease the additional installation of additional mods 
 In order to install a mod, you must modify the script to your liking. Below is the given format.
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
-    '-authorName/modName','versionNumber', `
-    '-authorName/modName','versionNumber')"
+'-authorName/modName','versionNumber', `
+'-authorName/modName','versionNumber')"
 ```
 
 Below is an example of what a script may look. You may also use this if you'd like as it's used within my friendgroup as our modpack.
 
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
-    '-notnotnotswipez/MoreCompany','1.7.2', `
-    '-RugbugRedfern/Skinwalkers','2.0.1', `
-    '-RickArg/Helmet_Cameras','2.1.5', `
-    '-x753/More_Suits','1.4.1', `
-    '-Sligili/More_Emotes','1.2.1', `
-    '-KoderTeh/Boombox_Controller','1.1.0', `
-    '-tinyhoot/ShipLobby','1.0.2', `
-    '-sunnobunno/YippeeMod','1.2.2', `
-    '-AllToasters/SpectateEnemies','1.5.0', `
-    '-Ryokune/CompatibilityChecker','1.1.1', `
-    '-Suskitech/AlwaysHearActiveWalkies','1.4.2', `
-    '-Renegades/WalkieUse','1.3.1', `
-    '-Renegades/FlashlightToggle','1.4.1')"
+'-notnotnotswipez/MoreCompany','1.7.2', `
+'-RugbugRedfern/Skinwalkers','2.0.1', `
+'-RickArg/Helmet_Cameras','2.1.5', `
+'-x753/More_Suits','1.4.1', `
+'-Sligili/More_Emotes','1.2.1', `
+'-KoderTeh/Boombox_Controller','1.1.0', `
+'-tinyhoot/ShipLobby','1.0.2', `
+'-sunnobunno/YippeeMod','1.2.2', `
+'-AllToasters/SpectateEnemies','1.5.0', `
+'-Ryokune/CompatibilityChecker','1.1.1', `
+'-Suskitech/AlwaysHearActiveWalkies','1.4.2', `
+'-Renegades/WalkieUse','1.3.1', `
+'-Renegades/FlashlightToggle','1.4.1')"
 ```
 
 Afterwards, execute the script in Windows's powershell. 
@@ -39,14 +39,14 @@ Afterwards, execute the script in Windows's powershell.
 Below is the given format for installing a modpack. All BepInEx configs that come from modpacks are saved as long they aren't overwritten.
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
-    '-modpack','authorName/modPackName','versionNumber')"
+'-modpack','authorName/modPackName','versionNumber')"
 ```
 
 To add mods ontop of a modpack, you are **required** to specify ``-mod`` when adding a new line of arguments. Declaring a modpack should be the **first** arguments given.
 ```
 powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/main/Install-Modpack.ps1')))) -ArgumentList @( `
-    '-modpack','authorName/modName','versionNumber', `
-    '-mod','authorName/modName','versionNumber')"
+'-modpack','authorName/modName','versionNumber', `
+'-authorName/modName','versionNumber')"
 ```
 
 Afterwards, execute the script in Windows's powershell. 

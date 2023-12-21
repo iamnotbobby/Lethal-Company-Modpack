@@ -7,7 +7,7 @@ function Get-PlatformInfo {
         "ARM64" { return "X64" }
         "EM64T" { return "X64" }
         "x86" { return "X86" }
-        default { throw "Unknown architecture -> $arch. Submit a bug report to KrystilizeNevaDies/Lethalize." }
+        default { throw "Unknown architecture -> $arch. Submit a bug report to https://github.com/returnkirbo/Lethal-Company-Modpack/" }
     }
 }
 

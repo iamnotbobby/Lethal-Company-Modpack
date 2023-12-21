@@ -64,7 +64,7 @@ Ensure that you have the correct syntax otherwise the script may not execute cor
 
 If you receive a 404 Not Found error it most likely means that one of the arguments set does not correctly match the given mod either due to misspelling, nonexistent version, or the mod not exist at all.
                   
-## Mods used within my modpack + Credits
+## My Modpack + Credits
 
 Lethal Company -> 45
 

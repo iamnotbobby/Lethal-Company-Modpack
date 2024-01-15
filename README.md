@@ -81,4 +81,6 @@ If you receive a 404 Not Found error it most likely means that one of the argume
 
 Want a mod added? Issues? Questions? File an issue and I'll get to you soon.
 
+The ``readme.md`` download links from the example scripts are commit locked to the latest version, so even if the Powershell file changed on GitHub, the script you copied and pasted into Powershell wouldn't alter unless you had a script that was updated to the latest commit.
+
 This is a modified version of [Lethalize](https://github.com/KrystilizeNevaDies/Lethalize) with the option to add any mod you'd like. Full thanks to KrystilizeNevaDies!

@@ -13,7 +13,7 @@ In order to install a mod, you must modify the script to your liking. This scrip
 ![image](https://github.com/returnkirbo/Lethal-Company-Modpack/assets/107429396/0834bb78-ba80-4c4f-b71a-3d00540a8032)
 
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/14a899f63d397ac6478e5ef7a1368c09ea0d89ca/Install-Modpack.ps1')))) -ArgumentList @( `
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/f57bae87a0f434f9a87d01288d0ace0a47f4d98c/Install-Modpack.ps1')))) -ArgumentList @( `
 'dependencyString', `
 'dependencyString')"
 ```
@@ -21,7 +21,7 @@ powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([script
 Below is an example of what a script may look. You may also use this if you'd like.
 
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/14a899f63d397ac6478e5ef7a1368c09ea0d89ca/Install-Modpack.ps1')))) -ArgumentList @( `
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/f57bae87a0f434f9a87d01288d0ace0a47f4d98c/Install-Modpack.ps1')))) -ArgumentList @( `
 'notnotnotswipez-MoreCompany-1.7.4', `
 'RugbugRedfern-Skinwalkers-4.0.1', `
 'RickArg-Helmet_Cameras-2.1.5', `
@@ -51,13 +51,13 @@ Afterwards, execute the script in Windows's powershell.
 
 Below is the given format for installing a modpack. All BepInEx configs that come from modpacks are saved as long they aren't overwritten.
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/14a899f63d397ac6478e5ef7a1368c09ea0d89ca/Install-Modpack.ps1')))) -ArgumentList @( `
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/f57bae87a0f434f9a87d01288d0ace0a47f4d98c/Install-Modpack.ps1')))) -ArgumentList @( `
 'modpack','dependencyString')"
 ```
 
 To add mods ontop of a modpack, just add a new line of arguments similar to installing a singular mod. Declaring a modpack should be the **first** arguments given.
 ```
-powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/14a899f63d397ac6478e5ef7a1368c09ea0d89ca/Install-Modpack.ps1')))) -ArgumentList @( `
+powershell -nop -ExecutionPolicy Bypass -c "Invoke-Command -ScriptBlock ([scriptblock]::Create([System.Text.Encoding]::UTF8.GetString((New-Object Net.WebClient).DownloadData('https://raw.githubusercontent.com/returnkirbo/Lethal-Company-Modpack/f57bae87a0f434f9a87d01288d0ace0a47f4d98c/Install-Modpack.ps1')))) -ArgumentList @( `
 'modpack','dependencyString', `
 'dependencyString')"
 ```

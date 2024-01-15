@@ -184,14 +184,16 @@ function Install ($arguments) {
     Write-Host ""
     
     # checks for modpack declaration
-    if ($arguments[0] -contains '-modpack') {
-    	$argValues = $argValue -split ','
-        $packageName = $arguments[1]
-       	$packageVersion = $arguments[2]
+    if ($arguments[0] -contains 'modpack') {
+
+		# split the dependency string info into author, modname, and version
+		$packageParts = $arguments[$i+1] -split '-'
+		$packageVersion = $arguments[$i+1] -replace '^.*-(\d+\.\d+\.\d+)$', '$1'
+		$packageName = "$($packageParts[0])/$($packageParts[1])"
 	
 		# ensuring that config folders & other folders aren't left behind before downloading other mods
 		Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
-		Write-Warning "Modpack $packageName installed, installing dependencies now."
+		Write-Warning "Modpack $packageName files installed, attempting install of dependencies from manifest.json now."
 		Write-Host ""
 		
         $packageUrl = "https://thunderstore.io/package/download/$packageName/$packageVersion"
@@ -232,23 +234,24 @@ function Install ($arguments) {
 			Write-Warning "Modpack dependencies installed. Installing other mods if there are any requested by the user."
 			Write-Host ""
 			
-		for ($i = 3; $i -lt $arguments.Count; $i += 2) {
-  			$packageNameWithDash = $arguments[$i]
-			$packageVersion = $arguments[$i + 1]
+		for ($i = 2; $i -lt $arguments.Count; $i += 1) {
 			
-			$packageName = $packageNameWithDash -replace '^-', ''
+			# split the dependency string info into author, modname, and version
+			$packageParts = $arguments[$i] -split '-'
+			$packageVersion = $arguments[$i] -replace '^.*-(\d+\.\d+\.\d+)$', '$1'
+			$packageName = "$($packageParts[0])/$($packageParts[1])"
 				
 			Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
 		}
 	}
 	} else {
  		# process multiple package arguments dynamically if it's not a modpack
-		for ($i = 0; $i -lt $arguments.Count; $i += 2) {
-			$packageNameWithDash = $arguments[$i]
-			$packageVersion = $arguments[$i + 1]
-
-			# remove the leading '-' character from the package name
-			$packageName = $packageNameWithDash -replace '^-', ''
+		for ($i = 0; $i -lt $arguments.Count; $i++) {
+			
+			# split the dependency string info into author, modname, and version
+			$packageParts = $arguments[$i] -split '-'
+			$packageVersion = $arguments[$i] -replace '^.*-(\d+\.\d+\.\d+)$', '$1'
+			$packageName = "$($packageParts[0])/$($packageParts[1])"
 		
 			Install-Package -packageName $packageName -packageVersion $packageVersion -lethalCompanyPath $lethalCompanyPath
 		}

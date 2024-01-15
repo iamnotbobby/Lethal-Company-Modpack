@@ -81,6 +81,7 @@ function Install-Package {
         # checks for correct path
         $bepInExFolder = Join-Path $tempDir.FullName "BepInEx"
 	$pluginsFolder = Join-Path $tempDir.FullName "plugins"
+	$configFolder = Join-Path $tempDir.FullName "config"
 
 	$pluginsCheck = Join-Path $bepInExPath "plugins"
         $coreCheck = Join-Path $bepInExPath "core"
@@ -108,6 +109,8 @@ function Install-Package {
             $installPath = $lethalCompanyPath
         } elseif (Test-Path $pluginsFolder -PathType Container){
             $installPath = $bepInExPath
+		} elseif (Test-Path $configFolder -PathType Container) {
+			$installPath = $bepInExPath
         } else {
 	$installPath = $pluginsPath
 		}
